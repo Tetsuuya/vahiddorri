@@ -49,7 +49,15 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: "/images/icon_divider3.png",
+    icon: [
+      {
+        url: "/images/cropped-diamond-1-32x32.png",
+        sizes: "32x32",
+        type: "image/png",
+      },
+    ],
+    shortcut: "/images/cropped-diamond-1-32x32.png",
+    apple: "/images/cropped-diamond-1-32x32.png",
   },
 };
 
