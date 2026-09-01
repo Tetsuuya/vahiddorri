@@ -84,10 +84,9 @@ export default function AlbumCard({ album }: AlbumCardProps) {
         <div className="mt-8 pt-6 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link
             href={targetHref}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3 bg-[#d4af37] hover:bg-[#dfbc7a] text-black font-bold text-xs uppercase tracking-[0.2em] rounded-md shadow-lg transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#d4af37] hover:bg-[#dfbc7a] text-black font-bold text-xs uppercase tracking-[0.2em] rounded-md shadow-lg transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
           >
             <span>Listen & Open Player</span>
-            <span>🎧</span>
           </Link>
 
           <span className="text-xs uppercase tracking-wider text-zinc-400 font-medium">

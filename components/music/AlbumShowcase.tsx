@@ -104,7 +104,7 @@ export default function AlbumShowcase() {
                   href="/voice"
                   className="px-3.5 py-1.5 bg-[#d4af37] hover:bg-[#dfbc7a] text-black text-[10.5px] font-bold uppercase tracking-wider rounded transition-transform hover:scale-105 active:scale-95"
                 >
-                  Open Player 🎧
+                  Open Player
                 </Link>
               </div>
             </div>
