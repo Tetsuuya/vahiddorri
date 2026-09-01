@@ -3,9 +3,7 @@ import Image from "next/image";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AlbumShowcase from "@/components/music/AlbumShowcase";
-import TrackCard from "@/components/music/TrackCard";
 import Divider from "@/components/ui/Divider";
-import { FEATURED_TRACKS } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Music & Compositions — Vahid Dorri",
@@ -53,24 +51,6 @@ export default function MusicPage() {
 
           {/* Featured Five-Track EP Album Showcase */}
           <AlbumShowcase />
-
-          {/* Additional Compositions Section */}
-          <div className="mt-8">
-            <div className="flex items-center justify-between mb-6 pb-2 border-b border-zinc-800">
-              <h2 className="font-serif-heading text-xl sm:text-2xl font-semibold text-white tracking-wide">
-                Additional Compositions & Singles
-              </h2>
-              <span className="text-xs uppercase tracking-widest text-zinc-400">
-                Acoustic & Studio
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 gap-6">
-              {FEATURED_TRACKS.map((track) => (
-                <TrackCard key={track.id} track={track} />
-              ))}
-            </div>
-          </div>
         </div>
       </main>
 
