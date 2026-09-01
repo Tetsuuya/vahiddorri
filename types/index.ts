@@ -38,6 +38,7 @@ export interface AlbumItem {
   price?: string;
   coverImage: string;
   description: string;
+  href?: string;
   credits: string[];
   tracks: AlbumTrack[];
 }

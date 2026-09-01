@@ -48,6 +48,7 @@ export const FEATURED_ALBUM: AlbumItem = {
   releaseYear: "2015",
   price: "$10 CAD",
   coverImage: "/images/Music/Vahid-Dorri-EP.jpg",
+  href: "/voice",
   description:
     "Vahid Dorri five-track EP album (Digital version). Original songs composed by Stefán Dickerson.",
   credits: [
@@ -94,6 +95,8 @@ export const FEATURED_ALBUM: AlbumItem = {
     },
   ],
 };
+
+export const ALBUMS_LIST: AlbumItem[] = [FEATURED_ALBUM];
 
 export const FEATURED_TRACKS: TrackItem[] = [
   {

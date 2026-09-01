@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import AlbumShowcase from "@/components/music/AlbumShowcase";
+import AlbumCard from "@/components/music/AlbumCard";
 import Divider from "@/components/ui/Divider";
+import { ALBUMS_LIST } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Music & Compositions — Vahid Dorri",
+  title: "Discography & Albums — Vahid Dorri",
   description:
-    "Listen to official tracks, five-track EP album, and classical crossover compositions by tenor singer Vahid Dorri.",
+    "Explore the discography, albums, and EP releases by tenor singer and songwriter Vahid Dorri.",
 };
 
 export default function MusicPage() {
@@ -35,22 +36,26 @@ export default function MusicPage() {
         {/* Content Container */}
         <div className="w-full max-w-6xl px-6 sm:px-12 -mt-12 z-10 pb-20">
           {/* Header Title & Ornaments */}
-          <div className="text-center mb-10 select-none">
+          <div className="text-center mb-12 select-none">
             <Divider type="top" className="mb-1" />
 
             <h1 className="font-serif-heading text-4xl sm:text-5xl md:text-6xl font-normal tracking-wide text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-              Music & Compositions
+              Albums & Discography
             </h1>
 
             <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.32em] text-[#d4af37] font-bold mt-2">
-              TENOR • CLASSICAL CROSSOVER • SONGWRITING
+              OFFICIAL RELEASES • DIGITAL ALBUMS
             </p>
 
             <Divider type="bottom" className="mt-2" />
           </div>
 
-          {/* Featured Five-Track EP Album Showcase */}
-          <AlbumShowcase />
+          {/* Scalable Albums Catalog Grid */}
+          <div className="flex flex-col gap-8">
+            {ALBUMS_LIST.map((album) => (
+              <AlbumCard key={album.id} album={album} />
+            ))}
+          </div>
         </div>
       </main>
 
