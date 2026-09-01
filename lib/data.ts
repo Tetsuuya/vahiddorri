@@ -42,18 +42,56 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const FEATURED_ALBUM: AlbumItem = {
-  id: "ep-album",
+  id: "five-track-ep",
   title: "Five-Track EP Album",
   subtitle: "Vahid Dorri",
-  releaseYear: "2020",
+  releaseYear: "2015",
+  price: "$10 CAD",
   coverImage: "/images/Music/Vahid-Dorri-EP.jpg",
-  description: "A signature 5-track classical crossover EP showcasing soaring tenor vocals, acoustic piano, and poetic lyrical compositions.",
+  description:
+    "Vahid Dorri five-track EP album (Digital version). Original songs composed by Stefán Dickerson.",
+  credits: [
+    "Vahid Dorri five-track EP album (Digital version)",
+    "Original songs composed by Stefán Dickerson",
+    "Canvasvision Music BMI",
+    "Copyright 2015 — All rights reserved",
+  ],
   tracks: [
-    { number: 1, title: "Symphonic Prelude", duration: "3:45" },
-    { number: 2, title: "Aria of the Night", duration: "4:12" },
-    { number: 3, title: "Melodies in C Minor", duration: "3:58" },
-    { number: 4, title: "Echoes of Tenor", duration: "4:30" },
-    { number: 5, title: "Final Nocturne", duration: "5:02" },
+    {
+      number: 1,
+      title: "Visions of a dream",
+      credits: "Music and Lyrics by Stefán Dickerson",
+      duration: "3:45",
+      audioSrc: "/audio/1-visions-of-a-dream.mp3",
+    },
+    {
+      number: 2,
+      title: "Never know why",
+      credits: "Music and Lyrics by Stefán Dickerson",
+      duration: "3:38",
+      audioSrc: "/audio/2-never-know-why.mp3",
+    },
+    {
+      number: 3,
+      title: "When seasons change",
+      credits: "Music and Lyrics by Stefán Dickerson",
+      duration: "4:09",
+      audioSrc: "/audio/3-when-seasons-change.mp3",
+    },
+    {
+      number: 4,
+      title: "My funny valentine",
+      credits: "Music by Richard Rodgers, Lyrics by Lorenz Hart",
+      duration: "5:32",
+      audioSrc: "/audio/4-my-funny-valentine.mp3",
+    },
+    {
+      number: 5,
+      title: "Nature boy",
+      credits: "Music by Eden Ahbez",
+      duration: "5:34",
+      audioSrc: "/audio/5-nature-boy.mp3",
+    },
   ],
 };
 

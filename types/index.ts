@@ -22,14 +22,24 @@ export interface TrackItem {
   description?: string;
 }
 
+export interface AlbumTrack {
+  number: number;
+  title: string;
+  credits: string;
+  duration?: string;
+  audioSrc: string;
+}
+
 export interface AlbumItem {
   id: string;
   title: string;
   subtitle: string;
   releaseYear: string;
+  price?: string;
   coverImage: string;
   description: string;
-  tracks: { number: number; title: string; duration: string }[];
+  credits: string[];
+  tracks: AlbumTrack[];
 }
 
 export interface VideoItem {
