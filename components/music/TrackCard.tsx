@@ -14,6 +14,7 @@ export default function TrackCard({ track }: TrackCardProps) {
           src={track.imageSrc || "/images/new-pianos.jpg"}
           alt={track.title}
           fill
+          sizes="(max-width: 640px) 100vw, 192px"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-300" />

@@ -12,6 +12,7 @@ export default function HeroSection() {
           src="/images/vahid-main.jpg"
           alt="Vahid Dorri - Tenor Singer"
           fill
+          sizes="100vw"
           priority
           quality={95}
           className="object-cover object-center"
@@ -28,6 +29,7 @@ export default function HeroSection() {
             src="/images/icon_divider3.png"
             alt="Ornament divider top"
             fill
+            sizes="44px"
             className="object-contain"
           />
         </div>
@@ -43,6 +45,7 @@ export default function HeroSection() {
             src="/images/divider_bottom3.jpg"
             alt="Ornament divider bottom"
             fill
+            sizes="20px"
             className="object-contain"
           />
         </div>

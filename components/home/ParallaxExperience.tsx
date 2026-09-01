@@ -77,6 +77,7 @@ export default function ParallaxExperience() {
             src="/images/vahid-main.jpg"
             alt="Vahid Dorri - Tenor Singer"
             fill
+            sizes="100vw"
             priority
             quality={95}
             className="object-cover object-center"
@@ -106,6 +107,7 @@ export default function ParallaxExperience() {
               src="/images/icon_divider3.png"
               alt="Decorative top icon"
               fill
+              sizes="(max-width: 640px) 40px, 44px"
               className="object-contain"
             />
           </div>
@@ -121,6 +123,7 @@ export default function ParallaxExperience() {
               src="/images/divider_bottom3.jpg"
               alt="Decorative bottom divider"
               fill
+              sizes="(max-width: 640px) 16px, 20px"
               className="object-contain"
             />
           </div>
@@ -181,6 +184,7 @@ export default function ParallaxExperience() {
             src="/images/new-pianos.jpg"
             alt="Piano keys"
             fill
+            sizes="100vw"
             priority
             quality={95}
             className="object-cover object-center"

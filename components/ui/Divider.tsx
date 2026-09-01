@@ -14,6 +14,7 @@ export default function Divider({ type = "both", className = "" }: DividerProps)
             src="/images/icon_divider3.png"
             alt="Decorative top divider"
             fill
+            sizes="44px"
             className="object-contain"
           />
         </div>
@@ -24,6 +25,7 @@ export default function Divider({ type = "both", className = "" }: DividerProps)
             src="/images/divider_bottom3.jpg"
             alt="Decorative bottom divider"
             fill
+            sizes="20px"
             className="object-contain"
           />
         </div>

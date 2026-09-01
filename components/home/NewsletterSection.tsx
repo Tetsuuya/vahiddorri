@@ -44,6 +44,7 @@ export default function NewsletterSection() {
           src="/images/new-pianos.jpg"
           alt="Piano keys background"
           fill
+          sizes="100vw"
           priority
           quality={95}
           className="object-cover object-center"
