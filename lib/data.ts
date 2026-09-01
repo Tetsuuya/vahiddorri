@@ -1,4 +1,4 @@
-import { NavItem, SocialLink, TrackItem, VideoItem } from "@/types";
+import { NavItem, SocialLink, TrackItem, AlbumItem, VideoItem } from "@/types";
 
 export const SITE_CONFIG = {
   name: "Vahid Dorri",
@@ -40,6 +40,22 @@ export const SOCIAL_LINKS: SocialLink[] = [
     ariaLabel: "Follow Vahid Dorri on Instagram",
   },
 ];
+
+export const FEATURED_ALBUM: AlbumItem = {
+  id: "ep-album",
+  title: "Five-Track EP Album",
+  subtitle: "Vahid Dorri",
+  releaseYear: "2020",
+  coverImage: "/images/Music/Vahid-Dorri-EP.jpg",
+  description: "A signature 5-track classical crossover EP showcasing soaring tenor vocals, acoustic piano, and poetic lyrical compositions.",
+  tracks: [
+    { number: 1, title: "Symphonic Prelude", duration: "3:45" },
+    { number: 2, title: "Aria of the Night", duration: "4:12" },
+    { number: 3, title: "Melodies in C Minor", duration: "3:58" },
+    { number: 4, title: "Echoes of Tenor", duration: "4:30" },
+    { number: 5, title: "Final Nocturne", duration: "5:02" },
+  ],
+};
 
 export const FEATURED_TRACKS: TrackItem[] = [
   {
