@@ -127,15 +127,45 @@ export const FEATURED_TRACKS: TrackItem[] = [
 
 export const FEATURED_VIDEOS: VideoItem[] = [
   {
-    id: "video-1",
-    title: "Live Concert Performance",
-    category: "Live Stage",
-    description: "Full live stage performance accompanied by live strings and grand piano.",
+    id: "vid-1",
+    title: "Autumn Night (Official Music Video)",
+    youtubeId: "F5PlAZBU7uk",
+    category: "Official Music Video",
+    description: "Official visual accompaniment to Autumn Night performed by tenor singer Vahid Dorri.",
   },
   {
-    id: "video-2",
-    title: "Official Studio Music Video",
-    category: "Music Video",
-    description: "Cinematic music video filmed in historic acoustic concert halls.",
+    id: "vid-2",
+    title: "Never Know Why",
+    youtubeId: "O7lJJbc_ix8",
+    category: "EP Track Performance",
+    description: "Original composition composed by Stefán Dickerson, vocals by Vahid Dorri.",
+  },
+  {
+    id: "vid-3",
+    title: "Visions of a dream",
+    youtubeId: "J6xaGwxSzDA",
+    category: "EP Track Performance",
+    description: "Music and lyrics by Stefán Dickerson, performed by Vahid Dorri.",
+  },
+  {
+    id: "vid-4",
+    title: "When Seasons Change",
+    youtubeId: "ALypgFvbxes",
+    category: "EP Track Performance",
+    description: "Emotive vocal release from the Five-Track EP Album.",
+  },
+  {
+    id: "vid-5",
+    title: "Nature Boy",
+    youtubeId: "UTt2bO174w4",
+    category: "Classical Performance",
+    description: "Classic composition by Eden Ahbez interpreted by tenor Vahid Dorri.",
+  },
+  {
+    id: "vid-6",
+    title: "My Funny Valentine",
+    youtubeId: "pGWXB4FDQHg",
+    category: "Classical Standard",
+    description: "Timeless classic by Richard Rodgers and Lorenz Hart performed by Vahid Dorri.",
   },
 ];

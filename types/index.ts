@@ -46,8 +46,7 @@ export interface AlbumItem {
 export interface VideoItem {
   id: string;
   title: string;
-  category: string;
-  embedUrl?: string;
-  thumbnailUrl?: string;
+  youtubeId: string;
+  category?: string;
   description?: string;
 }
