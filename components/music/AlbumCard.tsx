@@ -10,10 +10,11 @@ export default function AlbumCard({ album }: AlbumCardProps) {
   const targetHref = album.href || `/voice`;
 
   return (
-    <div className="group relative bg-[#121212]/90 border border-white/10 hover:border-[#d4af37]/60 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md transition-all duration-300 hover:shadow-[0_15px_40px_rgba(212,175,55,0.15)] flex flex-col md:flex-row items-center p-6 sm:p-8 gap-6 sm:gap-10">
+    <div className="group relative luxury-card rounded-2xl overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 sm:gap-10">
       {/* Album Artwork */}
       <Link
         href={targetHref}
+        data-cursor="play"
         className="relative w-56 sm:w-64 aspect-square rounded-xl overflow-hidden border border-[#d4af37]/40 shadow-[0_10px_30px_rgba(0,0,0,0.8)] flex-shrink-0 cursor-pointer block"
       >
         <Image
@@ -58,7 +59,7 @@ export default function AlbumCard({ album }: AlbumCardProps) {
           </div>
 
           <h2 className="font-serif-heading text-3xl sm:text-4xl font-bold text-white tracking-wide group-hover:text-[#d4af37] transition-colors">
-            <Link href={targetHref}>{album.title}</Link>
+            <Link href={targetHref} data-cursor="play">{album.title}</Link>
           </h2>
 
           <p className="text-xs uppercase tracking-widest text-zinc-400 mt-1 font-medium">
@@ -72,7 +73,7 @@ export default function AlbumCard({ album }: AlbumCardProps) {
           {/* Quick Track Preview Titles */}
           <div className="mt-4 flex flex-wrap items-center justify-center md:justify-start gap-2 text-xs text-zinc-400">
             <span className="text-zinc-400 font-semibold">Includes:</span>
-            {album.tracks.map((t, i) => (
+            {album.tracks.map((t) => (
               <span key={t.number} className="bg-zinc-900/80 px-2.5 py-1 rounded border border-white/5 text-[11px] text-zinc-300">
                 {t.number}. {t.title}
               </span>
@@ -84,6 +85,7 @@ export default function AlbumCard({ album }: AlbumCardProps) {
         <div className="mt-8 pt-6 border-t border-zinc-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
           <Link
             href={targetHref}
+            data-cursor="play"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#d4af37] hover:bg-[#dfbc7a] text-black font-bold text-xs uppercase tracking-[0.2em] rounded-md shadow-lg transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer"
           >
             <span>Listen & Open Player</span>

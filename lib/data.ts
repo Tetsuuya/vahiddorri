@@ -18,25 +18,25 @@ export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: "Facebook",
     href: "https://www.facebook.com/vahiddorri",
-    iconSrc: "/images/default_fb.png",
+    iconSrc: "/images/social_fb_new.png",
     ariaLabel: "Follow Vahid Dorri on Facebook",
   },
   {
     name: "Twitter",
     href: "https://twitter.com/vahiddorri",
-    iconSrc: "/images/default_twitter.png",
+    iconSrc: "/images/social_x_new.png",
     ariaLabel: "Follow Vahid Dorri on X / Twitter",
   },
   {
     name: "YouTube",
     href: "https://www.youtube.com/user/vahiddorri",
-    iconSrc: "/images/default_youtube.png",
+    iconSrc: "/images/social_youtube_new.png",
     ariaLabel: "Subscribe to Vahid Dorri on YouTube",
   },
   {
     name: "Instagram",
     href: "https://www.instagram.com/vahiddorri/",
-    iconSrc: "/images/plus_custom_icon0.png",
+    iconSrc: "/images/social_instagram_new.png",
     ariaLabel: "Follow Vahid Dorri on Instagram",
   },
 ];

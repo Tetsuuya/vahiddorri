@@ -92,7 +92,7 @@ export default function VoicePlayer() {
   const progressPercent = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="w-full bg-[#121212]/95 border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-10 backdrop-blur-md">
+    <div className="w-full luxury-card rounded-2xl p-6 sm:p-10">
       {/* Hidden Native Audio Element */}
       <audio
         ref={audioRef}
@@ -192,6 +192,7 @@ export default function VoicePlayer() {
                 <button
                   type="button"
                   onClick={handlePlayPause}
+                  data-cursor="play"
                   className="w-12 h-12 rounded-full bg-[#d4af37] text-black hover:bg-[#dfbc7a] flex items-center justify-center text-lg font-bold shadow-[0_0_20px_rgba(212,175,55,0.4)] transition-transform hover:scale-105 active:scale-95 cursor-pointer pl-0.5"
                   aria-label={isPlaying ? "Pause track" : "Play track"}
                 >
@@ -219,6 +220,7 @@ export default function VoicePlayer() {
                   return (
                     <div
                       key={track.number}
+                      data-cursor="play"
                       onClick={() => handleSelectTrack(idx)}
                       className={`flex items-center justify-between p-3 rounded-lg border transition-all duration-200 cursor-pointer ${
                         isActive

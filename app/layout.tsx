@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
+import CustomCursor from "@/components/ui/CustomCursor";
+import FilmGrain from "@/components/ui/FilmGrain";
+import AmbientGlow from "@/components/ui/AmbientGlow";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -69,9 +72,20 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${playfair.variable} ${montserrat.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-[#070707] text-[#e0e0e0] font-sans antialiased selection:bg-[#d4af37]/30 selection:text-white flex flex-col justify-between">
+      <head>
+        <link rel="preconnect" href="https://www.youtube-nocookie.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://img.youtube.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://i.ytimg.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
+        <link rel="dns-prefetch" href="https://img.youtube.com" />
+      </head>
+      <body className="min-h-screen bg-[#070707] text-[#e0e0e0] font-sans antialiased selection:bg-[#d4af37]/30 selection:text-white flex flex-col justify-between cursor-default relative">
+        <FilmGrain />
+        <AmbientGlow />
+        <CustomCursor />
         {children}
       </body>
     </html>

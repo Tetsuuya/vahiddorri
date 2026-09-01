@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AlbumCard from "@/components/music/AlbumCard";
 import Divider from "@/components/ui/Divider";
+import TextReveal from "@/components/ui/TextReveal";
 import { ALBUMS_LIST } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -39,9 +40,11 @@ export default function MusicPage() {
           <div className="text-center mb-12 select-none">
             <Divider type="top" className="mb-1" />
 
-            <h1 className="font-serif-heading text-4xl sm:text-5xl md:text-6xl font-normal tracking-wide text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-              Albums & Discography
-            </h1>
+            <TextReveal
+              text="Albums & Discography"
+              as="h1"
+              className="font-serif-heading text-4xl sm:text-5xl md:text-6xl font-normal tracking-wide text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]"
+            />
 
             <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.32em] text-[#d4af37] font-bold mt-2">
               OFFICIAL RELEASES • DIGITAL ALBUMS

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SITE_CONFIG } from "@/lib/data";
 import SocialLinks from "@/components/ui/SocialLinks";
+import TextReveal from "@/components/ui/TextReveal";
 
 export default function ParallaxExperience() {
   const [scrollY, setScrollY] = useState(0);
@@ -113,9 +114,11 @@ export default function ParallaxExperience() {
           </div>
 
           {/* Artist Name */}
-          <h1 className="font-serif-heading text-4xl sm:text-5xl md:text-6xl font-normal tracking-wide text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
-            {SITE_CONFIG.name}
-          </h1>
+          <TextReveal
+            text={SITE_CONFIG.name}
+            as="h1"
+            className="font-serif-heading text-4xl sm:text-5xl md:text-6xl font-normal tracking-wide text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]"
+          />
 
           {/* Bottom Divider (Smaller accent dash) */}
           <div className="relative w-4 sm:w-5 h-[1px] my-2 opacity-70">
