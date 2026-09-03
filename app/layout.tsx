@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
-import CustomCursor from "@/components/ui/CustomCursor";
 import FilmGrain from "@/components/ui/FilmGrain";
 import AmbientGlow from "@/components/ui/AmbientGlow";
 import "./globals.css";
@@ -85,7 +84,6 @@ export default function RootLayout({
       <body className="min-h-screen bg-[#070707] text-[#e0e0e0] font-sans antialiased selection:bg-[#d4af37]/30 selection:text-white flex flex-col justify-between cursor-default relative">
         <FilmGrain />
         <AmbientGlow />
-        <CustomCursor />
         {children}
       </body>
     </html>
