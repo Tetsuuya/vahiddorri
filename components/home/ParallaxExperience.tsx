@@ -79,7 +79,7 @@ export default function ParallaxExperience() {
   const heroBgDim = progress * 0.4;
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full max-w-full overflow-x-hidden">
       {/* SECTION 1: FIXED/STICKY HERO (Street Portrait) */}
       <section className="sticky top-0 h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden z-10">
         {/* Background Image with Dynamic Parallax & Dim */}

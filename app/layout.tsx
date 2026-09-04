@@ -1,8 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import FilmGrain from "@/components/ui/FilmGrain";
 import AmbientGlow from "@/components/ui/AmbientGlow";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
 
 const playfair = Playfair_Display({
   variable: "--font-serif-display",

@@ -14,10 +14,16 @@
   --font-sans: var(--font-sans-main), "Montserrat", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  max-width: 100%;
   overflow-x: hidden;
 }
 
