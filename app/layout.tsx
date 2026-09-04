@@ -7,7 +7,6 @@ import "./globals.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  minimumScale: 1,
   maximumScale: 5,
   userScalable: true,
 };
@@ -79,8 +78,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-scroll-behavior="smooth"
-      className={`${playfair.variable} ${montserrat.variable} scroll-smooth`}
+      className={`${playfair.variable} ${montserrat.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://www.youtube-nocookie.com" crossOrigin="anonymous" />

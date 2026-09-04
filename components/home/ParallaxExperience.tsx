@@ -248,7 +248,6 @@ export default function ParallaxExperience() {
             alt="Piano keys"
             fill
             sizes="100vw"
-            priority
             quality={85}
             className="object-cover object-[65%_center] sm:object-center"
           />

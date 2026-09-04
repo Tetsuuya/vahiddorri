@@ -39,6 +39,7 @@ export default function Navbar() {
         {/* Brand Logo */}
         <Link
           href="/"
+          prefetch={true}
           className="font-serif-heading text-sm sm:text-base md:text-lg font-bold tracking-[0.22em] sm:tracking-[0.25em] text-white hover:text-[#d4af37] transition-colors duration-300 uppercase"
         >
           Vahid Dorri
@@ -52,6 +53,7 @@ export default function Navbar() {
               <Link
                 key={item.id}
                 href={item.href}
+                prefetch={true}
                 className={`text-xs tracking-[0.2em] uppercase font-medium transition-all duration-200 relative py-1 ${
                   isActive
                     ? "text-[#d4af37] font-semibold"
@@ -111,6 +113,7 @@ export default function Navbar() {
                   <Link
                     key={item.id}
                     href={item.href}
+                    prefetch={true}
                     onClick={() => setIsOpen(false)}
                     className={`text-sm tracking-[0.22em] uppercase font-medium py-2 border-b border-white/5 transition-colors ${
                       isActive ? "text-[#d4af37] font-semibold" : "text-zinc-300 hover:text-white"
