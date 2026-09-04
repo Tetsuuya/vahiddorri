@@ -14,11 +14,14 @@ export default function ParallaxExperience() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     let ticking = false;
     const updateDimensions = () => {
       setWindowHeight(window.innerHeight);
       setScrollY(window.scrollY);
+      setIsMobile(window.innerWidth < 640);
     };
 
     updateDimensions();
@@ -43,6 +46,7 @@ export default function ParallaxExperience() {
 
     const handleResize = () => {
       setWindowHeight(window.innerHeight);
+      setIsMobile(window.innerWidth < 640);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -80,11 +84,11 @@ export default function ParallaxExperience() {
   // Parallax calculations based on viewport height (vh)
   const progress = Math.min(1, Math.max(0, scrollY / (windowHeight || 800)));
 
-  // Hero fade and translate
+  // On mobile touch devices, keep background scale and translation rock-solid to eliminate shaky micro-stutter
   const heroOpacity = Math.max(0, 1 - progress * 1.5);
-  const heroTranslateY = progress * -60;
-  const heroBgScale = 1 + progress * 0.08;
-  const heroBgDim = progress * 0.4;
+  const heroTranslateY = isMobile ? 0 : progress * -60;
+  const heroBgScale = isMobile ? 1 : 1 + progress * 0.08;
+  const heroBgDim = isMobile ? 0 : progress * 0.4;
 
   return (
     <div className="relative w-full">
@@ -94,8 +98,8 @@ export default function ParallaxExperience() {
         <div
           className="absolute inset-0 -z-10 origin-center will-change-transform"
           style={{
-            transform: `scale(${heroBgScale}) translateZ(0)`,
-            WebkitTransform: `scale(${heroBgScale}) translateZ(0)`,
+            transform: isMobile ? "none" : `scale(${heroBgScale}) translateZ(0)`,
+            WebkitTransform: isMobile ? "none" : `scale(${heroBgScale}) translateZ(0)`,
           }}
         >
           <Image
@@ -107,9 +111,9 @@ export default function ParallaxExperience() {
             quality={85}
             className="object-cover object-[28%_center] sm:object-[30%_center] lg:object-center transition-[object-position] duration-300"
           />
-          {/* Dynamic dark tint that increases as you scroll */}
+          {/* Dark tint that increases as you scroll */}
           <div
-            className="absolute inset-0 bg-black transition-colors"
+            className="absolute inset-0 bg-black"
             style={{ opacity: 0.2 + heroBgDim }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/85" />

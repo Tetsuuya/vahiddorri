@@ -19,6 +19,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 .font-serif-heading {
