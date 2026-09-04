@@ -26,7 +26,15 @@ export default function ParallaxExperience() {
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
+          const currentY = window.scrollY;
+          // When scrolled past the hero section, bail out of re-renders to ensure 120fps native touch scrolling
+          setScrollY((prev) => {
+            const cutoff = (window.innerHeight || 800) * 1.1;
+            if (prev >= cutoff && currentY >= cutoff) {
+              return prev;
+            }
+            return currentY;
+          });
           ticking = false;
         });
         ticking = true;
@@ -86,7 +94,8 @@ export default function ParallaxExperience() {
         <div
           className="absolute inset-0 -z-10 origin-center will-change-transform"
           style={{
-            transform: `scale(${heroBgScale})`,
+            transform: `scale(${heroBgScale}) translateZ(0)`,
+            WebkitTransform: `scale(${heroBgScale}) translateZ(0)`,
           }}
         >
           <Image
@@ -95,7 +104,7 @@ export default function ParallaxExperience() {
             fill
             sizes="100vw"
             priority
-            quality={95}
+            quality={85}
             className="object-cover object-[28%_center] sm:object-[30%_center] lg:object-center transition-[object-position] duration-300"
           />
           {/* Dynamic dark tint that increases as you scroll */}
@@ -115,7 +124,8 @@ export default function ParallaxExperience() {
           className="flex flex-col items-center text-center max-w-2xl mx-auto px-4 my-auto select-none will-change-[transform,opacity] z-10"
           style={{
             opacity: heroOpacity,
-            transform: `translateY(${heroTranslateY}px)`,
+            transform: `translateY(${heroTranslateY}px) translateZ(0)`,
+            WebkitTransform: `translateY(${heroTranslateY}px) translateZ(0)`,
           }}
         >
           {/* Top Diamond Ornament */}
@@ -239,7 +249,7 @@ export default function ParallaxExperience() {
             fill
             sizes="100vw"
             priority
-            quality={95}
+            quality={85}
             className="object-cover object-[65%_center] sm:object-center"
           />
           {/* Subtle multi-layer ambient dark overlay */}
@@ -249,7 +259,10 @@ export default function ParallaxExperience() {
 
         {/* Centered Newsletter Glassmorphic Card (Refined & Responsive) */}
         <div className="w-full max-w-md mx-auto px-4 z-10 my-auto py-4">
-          <div className="relative group bg-[#161616]/95 border border-white/15 hover:border-[#d4af37]/40 px-5 py-7 sm:px-10 sm:py-9 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-md transition-all duration-300 text-center rounded-sm">
+          <div
+            className="relative group bg-[#161616]/95 border border-white/15 hover:border-[#d4af37]/40 px-5 py-7 sm:px-10 sm:py-9 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-md transition-all duration-300 text-center rounded-sm will-change-transform"
+            style={{ transform: "translateZ(0)", WebkitTransform: "translateZ(0)" }}
+          >
             {/* Subtle corner golden accent glow - pointer-events-none without -z-10 */}
             <div className="pointer-events-none absolute inset-0 rounded-sm bg-gradient-to-b from-[#d4af37]/20 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
 
@@ -258,58 +271,58 @@ export default function ParallaxExperience() {
                 SIGN UP FOR FREE SONGS!
               </h2>
 
-            {status === "success" ? (
-              <div className="bg-zinc-900 border border-[#d4af37]/40 p-5 text-zinc-200 text-xs animate-in fade-in zoom-in-95 duration-300">
-                <p className="font-semibold text-white tracking-wide">Thank you for subscribing!</p>
-                <p className="text-[11px] text-zinc-400 mt-1">
-                  Your complimentary songs and updates will arrive in your inbox.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setStatus("idle")}
-                  className="mt-3 inline-block text-[10px] uppercase tracking-widest text-[#d4af37] hover:underline cursor-pointer"
-                >
-                  Sign up another email →
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col items-center w-full" noValidate>
-                <label
-                  htmlFor="piano-email-input"
-                  className="text-zinc-300 text-xs font-normal mb-2.5 tracking-wide"
-                >
-                  Enter email for free songs*
-                </label>
-
-                <div className="w-full max-w-sm">
-                  <input
-                    type="email"
-                    id="piano-email-input"
-                    name="email"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                      if (status === "error") setStatus("idle");
-                    }}
-                    placeholder="Email Address"
-                    required
-                    className="w-full bg-white text-black text-center text-sm sm:text-xs py-2.5 px-3 outline-none border border-transparent focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/30 placeholder:text-zinc-400 placeholder:text-center transition-all"
-                  />
-
+              {status === "success" ? (
+                <div className="bg-zinc-900 border border-[#d4af37]/40 p-5 text-zinc-200 text-xs animate-in fade-in zoom-in-95 duration-300">
+                  <p className="font-semibold text-white tracking-wide">Thank you for subscribing!</p>
+                  <p className="text-[11px] text-zinc-400 mt-1">
+                    Your complimentary songs and updates will arrive in your inbox.
+                  </p>
                   <button
-                    type="submit"
-                    disabled={status === "loading"}
-                    className="w-full mt-2.5 bg-[#0d0d0d] hover:bg-[#1f1f1f] active:scale-[0.99] text-white hover:text-[#d4af37] text-xs sm:text-[10.5px] font-bold tracking-[0.22em] sm:tracking-[0.25em] uppercase py-3 border border-zinc-700 hover:border-[#d4af37] transition-all duration-300 cursor-pointer disabled:opacity-50"
+                    type="button"
+                    onClick={() => setStatus("idle")}
+                    className="mt-3 inline-block text-[10px] uppercase tracking-widest text-[#d4af37] hover:underline cursor-pointer"
                   >
-                    {status === "loading" ? "SUBSCRIBING..." : "SUBSCRIBE"}
+                    Sign up another email →
                   </button>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="flex flex-col items-center w-full" noValidate>
+                  <label
+                    htmlFor="piano-email-input"
+                    className="text-zinc-300 text-xs font-normal mb-2.5 tracking-wide"
+                  >
+                    Enter email for free songs*
+                  </label>
 
-                {status === "error" && (
-                  <p className="text-[11px] text-rose-400 mt-2 font-medium">{errorMessage}</p>
-                )}
-              </form>
-            )}
+                  <div className="w-full max-w-sm">
+                    <input
+                      type="email"
+                      id="piano-email-input"
+                      name="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        if (status === "error") setStatus("idle");
+                      }}
+                      placeholder="Email Address"
+                      required
+                      className="w-full bg-white text-black text-center text-sm sm:text-xs py-2.5 px-3 outline-none border border-transparent focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/30 placeholder:text-zinc-400 placeholder:text-center transition-all"
+                    />
+
+                    <button
+                      type="submit"
+                      disabled={status === "loading"}
+                      className="w-full mt-2.5 bg-[#0d0d0d] hover:bg-[#1f1f1f] active:scale-[0.99] text-white hover:text-[#d4af37] text-xs sm:text-[10.5px] font-bold tracking-[0.22em] sm:tracking-[0.25em] uppercase py-3 border border-zinc-700 hover:border-[#d4af37] transition-all duration-300 cursor-pointer disabled:opacity-50"
+                    >
+                      {status === "loading" ? "SUBSCRIBING..." : "SUBSCRIBE"}
+                    </button>
+                  </div>
+
+                  {status === "error" && (
+                    <p className="text-[11px] text-rose-400 mt-2 font-medium">{errorMessage}</p>
+                  )}
+                </form>
+              )}
             </div>
           </div>
         </div>
