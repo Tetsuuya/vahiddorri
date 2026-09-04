@@ -20,19 +20,25 @@ export default function ParallaxExperience() {
     let ticking = false;
     const updateDimensions = () => {
       setWindowHeight(window.innerHeight);
-      setScrollY(window.scrollY);
-      setIsMobile(window.innerWidth < 640);
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (!mobile) {
+        setScrollY(window.scrollY);
+      }
     };
 
     updateDimensions();
 
     const handleScroll = () => {
+      // On mobile, bypass scroll state updates completely for 100% steady native scrolling
+      if (window.innerWidth < 768) return;
+
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentY = window.scrollY;
-          // When scrolled past the hero section, bail out of re-renders to ensure 120fps native touch scrolling
+          // When scrolled past the hero section on PC, bail out of re-renders
+          const cutoff = (window.innerHeight || 800) * 1.1;
           setScrollY((prev) => {
-            const cutoff = (window.innerHeight || 800) * 1.1;
             if (prev >= cutoff && currentY >= cutoff) {
               return prev;
             }
@@ -45,8 +51,7 @@ export default function ParallaxExperience() {
     };
 
     const handleResize = () => {
-      setWindowHeight(window.innerHeight);
-      setIsMobile(window.innerWidth < 640);
+      updateDimensions();
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -81,11 +86,11 @@ export default function ParallaxExperience() {
     }, 600);
   };
 
-  // Parallax calculations based on viewport height (vh)
-  const progress = Math.min(1, Math.max(0, scrollY / (windowHeight || 800)));
+  // Parallax calculations based on viewport height (vh) - active on PC only
+  const progress = isMobile ? 0 : Math.min(1, Math.max(0, scrollY / (windowHeight || 800)));
 
-  // On mobile touch devices, keep background scale and translation rock-solid to eliminate shaky micro-stutter
-  const heroOpacity = Math.max(0, 1 - progress * 1.5);
+  // On mobile touch devices, keep background scale, translation, and opacity rock-solid (steady)
+  const heroOpacity = isMobile ? 1 : Math.max(0, 1 - progress * 1.5);
   const heroTranslateY = isMobile ? 0 : progress * -60;
   const heroBgScale = isMobile ? 1 : 1 + progress * 0.08;
   const heroBgDim = isMobile ? 0 : progress * 0.4;
@@ -94,9 +99,9 @@ export default function ParallaxExperience() {
     <div className="relative w-full">
       {/* SECTION 1: FIXED/STICKY HERO (Street Portrait) */}
       <section className="sticky top-0 h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden z-10">
-        {/* Background Image with Dynamic Parallax & Dim */}
+        {/* Background Image with Dynamic Parallax & Dim (PC only) */}
         <div
-          className="absolute inset-0 -z-10 origin-center will-change-transform"
+          className={`absolute inset-0 -z-10 origin-center ${isMobile ? "" : "will-change-transform"}`}
           style={{
             transform: isMobile ? "none" : `scale(${heroBgScale}) translateZ(0)`,
             WebkitTransform: isMobile ? "none" : `scale(${heroBgScale}) translateZ(0)`,
@@ -111,7 +116,7 @@ export default function ParallaxExperience() {
             quality={85}
             className="object-cover object-[28%_center] sm:object-[30%_center] lg:object-center transition-[object-position] duration-300"
           />
-          {/* Dark tint that increases as you scroll */}
+          {/* Dark tint that increases as you scroll (PC only) */}
           <div
             className="absolute inset-0 bg-black"
             style={{ opacity: 0.2 + heroBgDim }}
@@ -123,13 +128,13 @@ export default function ParallaxExperience() {
         {/* Top Spacer */}
         <div className="h-16 sm:h-20" />
 
-        {/* Center Hero Content (Fades & drifts upward on scroll) */}
+        {/* Center Hero Content (Fades & drifts upward on PC, steady on mobile) */}
         <div
-          className="flex flex-col items-center text-center max-w-2xl mx-auto px-4 my-auto select-none will-change-[transform,opacity] z-10"
+          className={`flex flex-col items-center text-center max-w-2xl mx-auto px-4 my-auto select-none z-10 ${isMobile ? "" : "will-change-[transform,opacity]"}`}
           style={{
             opacity: heroOpacity,
-            transform: `translateY(${heroTranslateY}px) translateZ(0)`,
-            WebkitTransform: `translateY(${heroTranslateY}px) translateZ(0)`,
+            transform: isMobile ? "none" : `translateY(${heroTranslateY}px) translateZ(0)`,
+            WebkitTransform: isMobile ? "none" : `translateY(${heroTranslateY}px) translateZ(0)`,
           }}
         >
           {/* Top Diamond Ornament */}
@@ -174,7 +179,7 @@ export default function ParallaxExperience() {
 
         {/* Hero Bottom Bar */}
         <div
-          className="w-full px-4 sm:px-8 md:px-10 pb-4 sm:pb-6 relative z-10 will-change-opacity pointer-events-none"
+          className={`w-full px-4 sm:px-8 md:px-10 pb-4 sm:pb-6 relative z-10 pointer-events-none ${isMobile ? "" : "will-change-opacity"}`}
           style={{ opacity: heroOpacity }}
         >
           {/* Tablet & Desktop Layout (sm and up): Left spacer, center scroll-down, right social links */}
