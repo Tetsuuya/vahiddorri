@@ -79,7 +79,7 @@ export default function ParallaxExperience() {
   const heroBgDim = progress * 0.4;
 
   return (
-    <div className="relative w-full max-w-full overflow-x-hidden">
+    <div className="relative w-full">
       {/* SECTION 1: FIXED/STICKY HERO (Street Portrait) */}
       <section className="sticky top-0 h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden z-10">
         {/* Background Image with Dynamic Parallax & Dim */}
@@ -250,12 +250,13 @@ export default function ParallaxExperience() {
         {/* Centered Newsletter Glassmorphic Card (Refined & Responsive) */}
         <div className="w-full max-w-md mx-auto px-4 z-10 my-auto py-4">
           <div className="relative group bg-[#161616]/95 border border-white/15 hover:border-[#d4af37]/40 px-5 py-7 sm:px-10 sm:py-9 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-md transition-all duration-300 text-center rounded-sm">
-            {/* Subtle corner golden accent glow */}
-            <div className="absolute -inset-[1px] rounded-sm bg-gradient-to-b from-[#d4af37]/20 via-transparent to-transparent -z-10 opacity-60 group-hover:opacity-100 transition-opacity" />
+            {/* Subtle corner golden accent glow - pointer-events-none without -z-10 */}
+            <div className="pointer-events-none absolute inset-0 rounded-sm bg-gradient-to-b from-[#d4af37]/20 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
 
-            <h2 className="text-white text-xs sm:text-base font-bold tracking-[0.18em] sm:tracking-[0.2em] uppercase mb-3 drop-shadow">
-              SIGN UP FOR FREE SONGS!
-            </h2>
+            <div className="relative z-10 flex flex-col items-center">
+              <h2 className="text-white text-xs sm:text-base font-bold tracking-[0.18em] sm:tracking-[0.2em] uppercase mb-3 drop-shadow">
+                SIGN UP FOR FREE SONGS!
+              </h2>
 
             {status === "success" ? (
               <div className="bg-zinc-900 border border-[#d4af37]/40 p-5 text-zinc-200 text-xs animate-in fade-in zoom-in-95 duration-300">
@@ -309,6 +310,7 @@ export default function ParallaxExperience() {
                 )}
               </form>
             )}
+            </div>
           </div>
         </div>
 

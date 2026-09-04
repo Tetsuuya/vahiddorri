@@ -5,7 +5,7 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-      <main className="w-full max-w-full overflow-x-hidden">
+      <main className="w-full">
         <ParallaxExperience />
       </main>
     </>
