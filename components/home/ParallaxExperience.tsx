@@ -244,9 +244,15 @@ export default function ParallaxExperience() {
       </section>
 
       {/* SECTION 2: PIANO THEATER CURTAIN REVEAL (Slides up over fixed Hero) */}
-      <section className="relative z-20 min-h-[100dvh] w-full flex flex-col justify-between items-center shadow-[0_-35px_80px_rgba(0,0,0,0.95)] border-t border-white/10 bg-black overflow-hidden pt-20 sm:pt-24 pb-4 sm:pb-6">
-        {/* Background Piano Image with Subtle Counter-Parallax */}
-        <div className="absolute inset-0 -z-10">
+      <section
+        className="relative z-20 min-h-[100dvh] w-full flex flex-col justify-between items-center shadow-[0_-35px_80px_rgba(0,0,0,0.95)] border-t border-white/10 bg-black overflow-hidden pt-20 sm:pt-24 pb-4 sm:pb-6 will-change-transform"
+        style={{ transform: "translate3d(0, 0, 0)", WebkitTransform: "translate3d(0, 0, 0)" }}
+      >
+        {/* Background Piano Image */}
+        <div
+          className="absolute inset-0 -z-10 will-change-transform"
+          style={{ transform: "translate3d(0, 0, 0)", WebkitTransform: "translate3d(0, 0, 0)" }}
+        >
           <Image
             src="/images/new-pianos.jpg"
             alt="Piano keys"
@@ -260,11 +266,11 @@ export default function ParallaxExperience() {
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-black/60" />
         </div>
 
-        {/* Centered Newsletter Glassmorphic Card (Refined & Responsive) */}
+        {/* Centered Newsletter Glassmorphic Card (Rock-Steady & Responsive) */}
         <div className="w-full max-w-md mx-auto px-4 z-10 my-auto py-4">
           <div
-            className="relative group bg-[#161616]/95 border border-white/15 hover:border-[#d4af37]/40 px-5 py-7 sm:px-10 sm:py-9 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-md transition-all duration-300 text-center rounded-sm will-change-transform"
-            style={{ transform: "translateZ(0)", WebkitTransform: "translateZ(0)" }}
+            className="relative group bg-[#161616]/95 border border-white/15 hover:border-[#d4af37]/40 px-5 py-7 sm:px-10 sm:py-9 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-md transition-colors duration-200 text-center rounded-sm will-change-transform"
+            style={{ transform: "translate3d(0, 0, 0)", WebkitTransform: "translate3d(0, 0, 0)" }}
           >
             {/* Subtle corner golden accent glow - pointer-events-none without -z-10 */}
             <div className="pointer-events-none absolute inset-0 rounded-sm bg-gradient-to-b from-[#d4af37]/20 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
@@ -315,7 +321,7 @@ export default function ParallaxExperience() {
                     <button
                       type="submit"
                       disabled={status === "loading"}
-                      className="w-full mt-2.5 bg-[#0d0d0d] hover:bg-[#1f1f1f] active:scale-[0.99] text-white hover:text-[#d4af37] text-xs sm:text-[10.5px] font-bold tracking-[0.22em] sm:tracking-[0.25em] uppercase py-3 border border-zinc-700 hover:border-[#d4af37] transition-all duration-300 cursor-pointer disabled:opacity-50"
+                      className="w-full mt-2.5 bg-[#0d0d0d] hover:bg-[#1f1f1f] text-white hover:text-[#d4af37] text-xs sm:text-[10.5px] font-bold tracking-[0.22em] sm:tracking-[0.25em] uppercase py-3 border border-zinc-700 hover:border-[#d4af37] transition-colors duration-200 cursor-pointer disabled:opacity-50"
                     >
                       {status === "loading" ? "SUBSCRIBING..." : "SUBSCRIBE"}
                     </button>
