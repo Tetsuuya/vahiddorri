@@ -92,19 +92,24 @@ export default function ParallaxExperience() {
   // On mobile touch devices, keep background scale, translation, and opacity rock-solid (steady)
   const heroOpacity = isMobile ? 1 : Math.max(0, 1 - progress * 1.5);
   const heroTranslateY = isMobile ? 0 : progress * -60;
-  const heroBgScale = isMobile ? 1 : 1 + progress * 0.08;
   const heroBgDim = isMobile ? 0 : progress * 0.4;
+
+  const isCovered = scrollY > (windowHeight || 800) * 0.95;
 
   return (
     <div className="relative w-full">
-      {/* SECTION 1: FIXED/STICKY HERO (Street Portrait) */}
-      <section className="sticky top-0 h-[100dvh] w-full flex flex-col justify-between items-center overflow-hidden z-10">
-        {/* Background Image with Dynamic Parallax & Dim (PC only) */}
+      {/* SECTION 1: FIXED HERO (Street Portrait) - Pinned rock-solid on mobile and desktop */}
+      <section
+        className={`fixed inset-0 h-[100svh] sm:h-screen w-full flex flex-col justify-between items-center overflow-hidden z-10 ${
+          isCovered ? "pointer-events-none opacity-0 md:opacity-100" : ""
+        }`}
+      >
+        {/* Background Image with steady positioning (no zooming on scroll) */}
         <div
-          className={`absolute inset-0 -z-10 origin-center ${isMobile ? "" : "will-change-transform"}`}
+          className="absolute inset-0 -z-10 origin-center"
           style={{
-            transform: isMobile ? "none" : `scale(${heroBgScale}) translateZ(0)`,
-            WebkitTransform: isMobile ? "none" : `scale(${heroBgScale}) translateZ(0)`,
+            transform: isMobile ? "none" : "translateZ(0)",
+            WebkitTransform: isMobile ? "none" : "translateZ(0)",
           }}
         >
           <Image
@@ -114,7 +119,7 @@ export default function ParallaxExperience() {
             sizes="100vw"
             priority
             quality={85}
-            className="object-cover object-[28%_center] sm:object-[30%_center] lg:object-center transition-[object-position] duration-300"
+            className="object-cover object-[28%_center] sm:object-[30%_center] lg:object-center"
           />
           {/* Dark tint that increases as you scroll (PC only) */}
           <div
@@ -248,9 +253,12 @@ export default function ParallaxExperience() {
         </div>
       </section>
 
+      {/* Spacer to provide exactly 1 viewport of scrollable travel before Section 2 curtain */}
+      <div className="w-full h-[100svh] sm:h-screen pointer-events-none" aria-hidden="true" />
+
       {/* SECTION 2: PIANO THEATER CURTAIN REVEAL (Slides up over fixed Hero) */}
       <section
-        className="relative z-20 min-h-[100dvh] w-full flex flex-col justify-between items-center shadow-[0_-35px_80px_rgba(0,0,0,0.95)] border-t border-white/10 bg-black overflow-hidden pt-20 sm:pt-24 pb-4 sm:pb-6 will-change-transform"
+        className="relative z-20 min-h-[100svh] sm:min-h-screen w-full flex flex-col justify-between items-center shadow-[0_-35px_80px_rgba(0,0,0,0.95)] border-t border-white/10 bg-black overflow-hidden pt-20 sm:pt-24 pb-4 sm:pb-6 will-change-transform"
         style={{ transform: "translate3d(0, 0, 0)", WebkitTransform: "translate3d(0, 0, 0)" }}
       >
         {/* Background Piano Image */}

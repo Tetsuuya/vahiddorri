@@ -14,12 +14,16 @@
   --font-sans: var(--font-sans-main), "Montserrat", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+html,
+body {
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  overflow-x: hidden;
-  overscroll-behavior-x: none;
 }
 
 .font-serif-heading {
